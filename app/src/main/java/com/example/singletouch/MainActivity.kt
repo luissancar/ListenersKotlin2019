@@ -11,7 +11,7 @@ import androidx.core.app.ComponentActivity
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-
+import android.view.KeyEvent
 
 
 class MainActivity : AppCompatActivity()   {
@@ -42,6 +42,15 @@ class MainActivity : AppCompatActivity()   {
                toast("OnClick")
            }
        })
+
+        editText.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
+                //Perform Code
+                toast("keypress")
+                return@OnKeyListener true
+            }
+            false
+        })
 
 
 
